@@ -1,0 +1,39 @@
+.menu {
+  position: relative;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.toggle i {
+  font-size: 1.5rem;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem;
+}
+
+.dropdown-menu p {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.dropdown-menu a {
+  color: inherit;
+  text-decoration: none;
+}
