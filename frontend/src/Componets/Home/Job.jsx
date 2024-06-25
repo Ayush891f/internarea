@@ -48,8 +48,8 @@ const { t, i18n } = useTranslation();
 ""}`} onClick={()=>setSelectedCategory("Work From Home")}>{t('Work From Home')}</span>
 <span className={`category mr-4 ml-6 ${selectedCategory==="Part-time"?'bg-blue-500 text-white':
 ""}`} onClick={()=>setSelectedCategory("Part-time")}>{t('Part-time')}</span>
-<span className={`category mr-4 ml-6 ${selectedCategory==="{t('MBA')}"?'bg-blue-500 text-white':
-""}`} onClick={()=>setSelectedCategory("MBA")}>MBA</span>
+<span className={`category mr-4 ml-6 ${selectedCategory==="MBA"?'bg-blue-500 text-white':
+""}`} onClick={()=>setSelectedCategory("MBA")}>{t('MBA')}</span>
 <span className={`category mr-4 ml-6 ${selectedCategory==="Engineering"?'bg-blue-500 text-white':
 ""}`} onClick={()=>setSelectedCategory("Engineering")}>{t('Engineering')}</span>
 <span className={`category mr-4 ml-6 ${selectedCategory==="media"?'bg-blue-500 text-white':

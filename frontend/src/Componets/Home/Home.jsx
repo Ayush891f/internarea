@@ -138,25 +138,25 @@ filterInternShips.map(( data,index)=>(
 <div className="analytics mt-8 flex flex-wrap justify-center items-center text-center">
     <div className="text-block mt-5">
     <span className='font-bold text-6xl text-blue-600'>300K+</span>
-<p>companies hiring</p>
+<p>{t('companies hiring')}</p>
     </div>
 <div className="text-block mt-5">
     <span className='font-bold text-6xl text-blue-600'>10K+</span>
-    <p>new openings everyday</p>
+    <p>{t('new openings everyday')}</p>
 </div>
 <div className="text-block mt-5">
     <span className='font-bold text-6xl text-blue-600'>21Mn+</span>
-    <p>active students</p>
+    <p>{t('active students')}</p>
 </div>
 <div className="text-block mt-5">
     <span className='font-bold text-6xl text-blue-600'>600K+</span>
-    <p>learners</p>
+    <p>{t('learners')}</p>
 </div>
 </div>
 
 <div className="logins flex  h-32 mt-8">
 <div className="cont">
-<p className="flex justify-center text-white text-xl items-center m-5 w-30">Empower your career with InternArea today</p>
+<p className="flex justify-center text-white text-xl items-center m-5 w-30">{t('Empower your career with InternArea today')}</p>
 </div>
 <div className="log flex">
 
@@ -170,10 +170,10 @@ filterInternShips.map(( data,index)=>(
                        <path d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.7592 25.1975 27.56 26.805 26.0133 27.9758C26.0142 27.975 26.015 27.975 26.0158 27.9742L31.1742 32.3392C30.8092 32.6708 36.6667 28.3333 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z" fill="#1976D2"/>
                    </svg>
                </div>
-               <p class="px-4 py-3 w-5/6 text-center text-sm text-gray-600 font-bold ">Sign in with Google</p>
+               <p class="px-4 py-3 w-5/6 text-center text-sm text-gray-600 font-bold ">{t('Sign in with Google')}</p>
   </a>
   <a to="/register">
-    <button className='btn6 '> Register</button></a>
+    <button className='btn6 '> {t('Register')}</button></a>
     </div>
 </div>
     </>

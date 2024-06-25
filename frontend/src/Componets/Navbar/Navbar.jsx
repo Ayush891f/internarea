@@ -238,11 +238,11 @@ function Navbar() {
                             <button id='cross' onClick={() => setDivVisibleForLogin(false)}><i className="bi bi-x"></i></button>
                             <h5 id='state' className='mb-4 justify-center text-center'>
                                 <span id='Sign-in' style={{ cursor: "pointer" }} className={`auth-tab ${isStudent ? 'active' : ""}`} onClick={() => setStudent(true)}>
-                                    Student
+                                    {t('Student')}
                                 </span>
                                 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                 <span id='join-in' style={{ cursor: "pointer" }} className={`auth-tab ${isStudent ? 'active' : ""}`} onClick={() => setStudent(false)}>
-                                    Employee and T&P
+                                    {t('Employee and T&P')}
                                 </span>
                             </h5> 
                             {isStudent ? (
@@ -258,7 +258,7 @@ function Navbar() {
                                                         <path d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.64 25.575 27.1759 27.4659 25.2333 28.7483L25.2592 28.9217L30.5975 33.125C29.9658 33.6867 36.6667 29.2042 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z" fill="#1976D2" />
                                                     </svg>
                                                 </div>
-                                                <h1 id='go' className="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">Sign in with Google</h1>
+                                                <h1 id='go' className="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">{t('Sign in with Google')}</h1>
                                             </p>
                                         </div>
                                     </div>
@@ -276,7 +276,7 @@ function Navbar() {
                                                         <path d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.64 25.575 27.1759 27.4659 25.2333 28.7483L25.2592 28.9217L30.5975 33.125C29.9658 33.6867 36.6667 29.2042 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z" fill="#1976D2" />
                                                     </svg>
                                                 </div>
-                                                <h1 id='go' className="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">Sign in with Google</h1>
+                                                <h1 id='go' className="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">{t('Sign in with Google')}</h1>
                                             </p>
                                         </div>
                                     </div>

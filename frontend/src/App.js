@@ -24,7 +24,8 @@ import { auth } from './firebase/firebase';
 import{ useLocation } from 'react-router-dom';
 import './App.css';
 import './i18n';
-
+import { UserAuthContextProvider } from './firebase/UserAuthContext';
+import LoginHistory from './LoginHistory';
 
 axios.defaults.baseURL = 'http://localhost:5000';
 
@@ -40,8 +41,8 @@ const App = () => {
   const [message, setMessage] = useState('');
   const [showOtpInput, setShowOtpInput] = useState(false);
   const [otpError, setOtpError] = useState('');
-
-
+  const [loginId, setLoginId] = useState(null);
+  const [showHistory, setShowHistory] = useState(false);
   const currentLocation = useLocation();
 
   useEffect(() => {
@@ -55,8 +56,21 @@ const App = () => {
     try {
       const response = await axios.post('http://localhost:5000/login', { userId, email });
       setMessage(response.data.message);
-      if (response.data.message === 'OTP sent to your email. Please verify.') {
+      setLoginId(response.data.loginId);
+      if (response.data.loginId) {
         setShowOtpInput(true);
+      }
+    } catch (error) {
+      setMessage(error.response.data.error);
+    }
+  };
+
+  const handleOtpVerify = async () => {
+    try {
+      const response = await axios.post('http://localhost:5000/verifyotp', { loginId, otp });
+      setMessage(response.data.message);
+      if (response.data.message === 'OTP verified successfully') {
+        setShowHistory(true);
       }
     } catch (error) {
       setMessage(error.response.data.error);
@@ -139,23 +153,7 @@ const App = () => {
       alert('An error occurred while verifying OTP.');
     }
   };
-      const verifyotp = async () => {
-       try {
-        console.log('Frontend - identifier:', identifier);
-        console.log('Frontend - otp:', otp);
-      const response = await axios.post('.api/verifyotp', { identifier, otp });
-      if (response.data.success) {
-        alert('OTP verified successfully.');
-      } else {
-        setOtpError('Invalid OTP. Please try again.');
-
-      }
-    } catch (error) {
-      console.error('Error verifying OTP:', error);
-      setOtpError('An error occurred while verifying OTP.');
-    }
-  };
-  
+     
 
   const applyLanguageAndBackground = (lng) => {
     i18n.changeLanguage(lng);
@@ -199,6 +197,7 @@ const App = () => {
   return (
     <div className="App flex flex-col min-h-screen">
       <Navbar />
+      <UserAuthContextProvider/>
       <div className="flex flex-col items-center justify-center flex-grow">
         <h1 className="text-4xl font-bold mb-6">{t('welcome')}</h1>
         <p className="mb-4">{t('description')}</p>
@@ -265,46 +264,32 @@ const App = () => {
         <div className="flex flex-col items-center bg-white p-6 rounded shadow-lg">
           <h1 className="text-2xl font-bold mb-4">{t('Login')}</h1>
           <input
-            type="text"
-            placeholder="User ID"
-            value={userId}
-            onChange={(e) => setUserId(e.target.value)}
-            className="border p-2 mb-4 w-full max-w-sm"
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="border p-2 mb-4 w-full max-w-sm"
-          />
-          <button
-            onClick={handleLogin}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
-          >
-            Login
-          </button>
-          <p className="mt-4">{message}</p>
-        </div>
-        
-      )}
-
+        type="text"
+        placeholder="User ID"
+        value={userId}
+        onChange={(e) => setUserId(e.target.value)}
+      />
+      <input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <button onClick={handleLogin}>Login</button>
       {showOtpInput && (
-  <div className="flex flex-col items-center">
-    <p>{t('otpPrompt')}</p>
-    <input
-      type="text"
-      value={otp}
-      onChange={(e) => setOtp(e.target.value)}
-      className="border p-2 mb-4"
-    />
-    <button
-      onClick={verifyotp}
-      className="bg-blue-500 text-white px-4 py-2 rounded"
-    >
-      {t('verifyotp')}
-    </button>
-    {otpError && <p className="text-red-500">{otpError}</p>}
+        <div>
+          <input
+            type="text"
+            placeholder="Enter OTP"
+            value={otp}
+            onChange={(e) => setOtp(e.target.value)}
+          />
+          <button onClick={handleOtpVerify}>Verify OTP</button>
+        </div>
+      )}
+      <p>{message}</p>
+      {showHistory && <LoginHistory userId={userId} />}
+      
   </div>
 )}
 
