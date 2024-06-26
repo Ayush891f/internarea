@@ -2,8 +2,8 @@ const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
 dotenv.config({ path: './config.env' });
 // const bcrypt=require("bcrypt";)
-const root_email = "rajandubey5751@gmail.com";
-const pass = "ggyw gsbl vrzy fuif";
+const root_email = "process.env.EMAIL_USER";
+const pass = "process.env.EMAIL_PASS";
 const sendResetMail = async (name, email, token) => {
     try {
         const transporter = nodemailer.createTransport({
@@ -13,12 +13,12 @@ const sendResetMail = async (name, email, token) => {
             secure: false,
             requireTLS: true,
             auth: {
-                user:"rajandubey5751@gmail.com",
-                pass: "ggyw gsbl vrzy fuif",
+                user:"process.env.EMAIL_USER",
+                pass: "process.env.EMAIL_PASS",
             }
         });
         const mailOptions = {
-            from:"rajandubey5751@gmail.com",
+            from:"process.env.EMAIL_USER",
             to: email,
             subject: 'For Reset Password',
             html: '<h3>Hii! ' + name + '</h3><br>please click here to <a href="http://127.0.0.1:8000/forget-password?token=' + token + '">Reset</a> your password.'

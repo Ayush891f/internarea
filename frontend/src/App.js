@@ -289,7 +289,7 @@ const App = () => {
       )}
       <p>{message}</p>
       {showHistory && <LoginHistory userId={userId} />}
-      
+      <LoginHistory/>
   </div>
 )}
 

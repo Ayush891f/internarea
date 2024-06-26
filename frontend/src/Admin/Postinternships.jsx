@@ -52,7 +52,7 @@ function Postinternships() {
           AdditionalInfo:additionalInfo,
   
       }
-  axios.post("https://internshipbackend-vwja.onrender.com/api/internship",bodyJosn).then((res)=>{
+  axios.post(`${window.location.origin}/api/internship`,bodyJosn).then((res)=>{
       console.log(res.data)
     }).catch((err)=>
     console.log(err))

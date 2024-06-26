@@ -9,7 +9,7 @@ function DeatilApplication() {
 const id=params.get("a")
 useEffect(()=>{
    const fetchData= async()=>{
-  const response=await axios.get(`https://internshipbackend-vwja.onrender.com/api/application/${id}`)
+  const response=await axios.get(`${window.location.origin}/application/${id}`)
 
   setData([response.data])
    }
@@ -17,7 +17,7 @@ useEffect(()=>{
 },[id])
 const handleAcceptAndReject= async(id,action)=>{
   try {
-    const response=await axios.put(`https://internshipbackend-vwja.onrender.com/api/application/${id}`,{action})
+    const response=await axios.put(`${window.location.origin}/application/${id}`,{action})
     const UpdateApplication=data.map(app=>(app._id===id?response.data.data:app))
     setData(UpdateApplication)
 

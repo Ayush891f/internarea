@@ -12,7 +12,7 @@ function Job() {
     useEffect(()=>{
         const fetchData= async()=>{
             try {
-            const response= await axios.get(`https://internshipbackend-vwja.onrender.com/api/job`)
+            const response= await axios.get(`${window.location.origin}/api/job`)
             setJobData(response.data)
         } catch (error) {
                console.log(error) 
